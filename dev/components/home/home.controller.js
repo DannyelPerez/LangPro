@@ -3,10 +3,11 @@
 
     angular.module("AppProject")
         .controller("homeController", homeController);
-    homeController.$inject = [];
+    homeController.$inject = ['$stateParams'];
 
-    function homeController() {
+    function homeController($stateParams) {
         var vm = this;
-        vm.test = "He   llo         World";
+        vm.test = "HelloWorld";
+        console.log($stateParams);
     }
 })();
