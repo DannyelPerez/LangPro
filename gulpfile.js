@@ -33,6 +33,7 @@ var thirdPartyLibs = [
 
 var scripts = [
     path.dev.app + "app.js",
+    path.dev.app + "*.js",
     path.dev.app + "**/*.js",
     path.dev.app + "**/*.*.js"
 ];
@@ -71,13 +72,15 @@ gulp.task("jsConcatThirdPartyLibs", function() {
 gulp.task("jsConcatScripts", function() {
     return gulp.src(scripts)
         .pipe(concat("scripts.js"))
-        .pipe(gulp.dest(path.public.js));
+        .pipe(gulp.dest(path.public.js))
+        .pipe(connect.reload());
 });
 
 gulp.task("connect", function() {
     connect.server({
         root: "",
-        port: 3000
+        port: 3000,
+        livereload: true
     });
     console.log("Success");
 });
@@ -85,7 +88,11 @@ gulp.task("connect", function() {
 
 gulp.task("watch", function() {
     gulp.watch(thirdPartyLibs, ["thirdPartyLibs"]);
-    gulp.watch(scripts, ["jsConcatScripts"]);
+    gulp.watch([
+        path.dev.app + "app.js",
+        path.dev.app + "**/*.js",
+        path.dev.app + "**/*.*.js"
+    ], ["jsConcatScripts"]);
     gulp.watch([path.dev.styles.components + "**/*.less"], ["css-Components"]);
 });
 

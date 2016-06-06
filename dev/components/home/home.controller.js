@@ -7,6 +7,6 @@
 
     function homeController() {
         var vm = this;
-        vm.test = "HelloWorld";
+        vm.test = "He   llo         World";
     }
 })();

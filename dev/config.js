@@ -18,6 +18,11 @@
                 url: "/home",
                 templateUrl: templatesUrl + "home/home.html",
                 controller: "homeController as vm"
+            })
+            .state("login", {
+                url: "/login",
+                templateUrl: templatesUrl + "login/login.html",
+                controller: "loginController as vm"
             });
     }
 
