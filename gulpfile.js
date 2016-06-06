@@ -28,7 +28,7 @@ var thirdPartyLibs = [
     path.dev.bower + "bootstrap/dist/js/bootstrap.min.js",
     path.dev.bower + "angular/angular.js",
     path.dev.bower + "angular-ui-router/release/angular-ui-router.min.js",
-    path.dev.bower + "/material-desgin-lite/material.min.js"
+    path.dev.bower + "angular-material/angular-material.min.js"
 ];
 
 var scripts = [
@@ -39,13 +39,11 @@ var scripts = [
 
 var stylesSource = [
     path.dev.bower + "bootstrap/dist/css/bootstrap.min.css",
-    path.dev.bower + "material-design-lite/material.min.css",
+    path.dev.bower + "angular-material/angular-material.min.css"
     path.dev.app + "assets/css/roboto.css"
 ]
 
 gulp.task("css-Components", function() {
-    console.log("Compiling css");
-
     return gulp.src(path.dev.styles.components + "components.less")
         .pipe(less({
             paths: [pathReq.join(__dirname, "less", "includes")],
@@ -56,7 +54,6 @@ gulp.task("css-Components", function() {
 
 
 gulp.task("cssConcatThirdPartyStyles", function() {
-    console.log(stylesSource);
     return gulp.src(stylesSource)
         .pipe(concat("ThirdPartyStyles.css"))
         .pipe(gulp.dest(path.public.css));
@@ -79,7 +76,6 @@ gulp.task("connect", function() {
         root: "",
         port: 3000
     });
-    console.log("Success");
 });
 
 
