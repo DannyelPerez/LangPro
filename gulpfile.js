@@ -28,6 +28,8 @@ var thirdPartyLibs = [
     path.dev.bower + "bootstrap/dist/js/bootstrap.min.js",
     path.dev.bower + "angular/angular.js",
     path.dev.bower + "angular-ui-router/release/angular-ui-router.min.js",
+    path.dev.bower + "angular-aria/angular-aria.min.js",
+    path.dev.bower + "angular-animate/angular-animate.min.js",
     path.dev.bower + "angular-material/angular-material.min.js"
 ];
 

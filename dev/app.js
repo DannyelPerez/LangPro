@@ -1,4 +1,4 @@
 (function(){
 	"use strict";
-	angular.module("AppProject",['ui.router']);
+	angular.module("AppProject",['ui.router','ngMaterial','ngAnimate']);
 })();
