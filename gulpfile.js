@@ -40,7 +40,7 @@ var scripts = [
 
 var stylesSource = [
     path.dev.bower + "bootstrap/dist/css/bootstrap.min.css",
-    path.dev.bower + "angular-material/angular-material.min.css"
+    path.dev.bower + "angular-material/angular-material.min.css",
     path.dev.app + "assets/css/roboto.css"
 ]
 
@@ -76,7 +76,7 @@ gulp.task("jsConcatScripts", function() {
 gulp.task("connect", function() {
     connect.server({
         root: "",
-        port: 3000,
+        port: 3030,
         livereload: true
     });
 });

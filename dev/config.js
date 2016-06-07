@@ -23,6 +23,11 @@
                 url: "/login",
                 templateUrl: templatesUrl + "login/login.html",
                 controller: "loginController as vm"
+            })
+            .state("verified", {
+                url: "/verified/{uid}/&token={token}",
+                templateUrl: templatesUrl + "verified/verified.html",
+                controller: "verifiedController as vm"
             });
     }
 
