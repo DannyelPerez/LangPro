@@ -11,7 +11,8 @@
             restrict: 'E',
             scope: {
                 name:'=?',
-                value:'=?'
+                value:'=?',
+                inputType:'=?'
             },
             controller : 'inputsController as vm',
             templateUrl: 'dev/core/inputs/inputs.html'

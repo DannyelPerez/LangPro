@@ -28,6 +28,11 @@
                 url: "/verified/{uid}/&token={token}",
                 templateUrl: templatesUrl + "verified/verified.html",
                 controller: "verifiedController as vm"
+            })
+            .state("registration", {
+                url: "/registration",
+                templateUrl: templatesUrl + "registration/registration.html",
+                controller: "registrationController as vm"
             });
     }
 

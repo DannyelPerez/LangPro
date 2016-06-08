@@ -16,6 +16,7 @@ path.dev.app = "dev/";
 path.dev.styles = {};
 
 path.dev.styles.components = "dev/components/";
+path.dev.styles.core = "dev/core/";
 
 path.dev.bower = "bower_components/";
 
@@ -48,6 +49,15 @@ var stylesSource = [
 
 gulp.task("css-Components", function() {
     return gulp.src(path.dev.styles.components + "components.less")
+        .pipe(less({
+            paths: [pathReq.join(__dirname, "less", "includes")],
+            compress: true
+        }))
+        .pipe(gulp.dest(path.public.css));
+});
+
+gulp.task("css-Core", function() {
+    return gulp.src(path.dev.styles.core + "core.less")
         .pipe(less({
             paths: [pathReq.join(__dirname, "less", "includes")],
             compress: true
@@ -92,6 +102,7 @@ gulp.task("watch", function() {
         path.dev.app + "**/*.*.js"
     ], ["jsConcatScripts"]);
     gulp.watch([path.dev.styles.components + "**/*.less"], ["css-Components"]);
+    gulp.watch([path.dev.styles.components + "**/*.less"], ["css-Core"]);
 });
 
-gulp.task("start", ["jsConcatThirdPartyLibs", "jsConcatScripts", "cssConcatThirdPartyStyles", "css-Components", "connect", "watch"]);
+gulp.task("start", ["jsConcatThirdPartyLibs", "jsConcatScripts", "cssConcatThirdPartyStyles", "css-Components", "css-Core", "connect", "watch"]);
