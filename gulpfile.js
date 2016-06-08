@@ -102,7 +102,7 @@ gulp.task("watch", function() {
         path.dev.app + "**/*.*.js"
     ], ["jsConcatScripts"]);
     gulp.watch([path.dev.styles.components + "**/*.less"], ["css-Components"]);
-    gulp.watch([path.dev.styles.components + "**/*.less"], ["css-Core"]);
+    gulp.watch([path.dev.styles.core + "**/*.less"], ["css-Core"]);
 });
 
 gulp.task("start", ["jsConcatThirdPartyLibs", "jsConcatScripts", "cssConcatThirdPartyStyles", "css-Components", "css-Core", "connect", "watch"]);

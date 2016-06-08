@@ -17,7 +17,7 @@
         };
 
         vm.button = {
-            name: 'Boton',
+            name: 'Login',
             onClick: function() {
                 console.log(vm.username.value);
                 console.log(vm.email.value);

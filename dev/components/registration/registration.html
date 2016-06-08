@@ -3,6 +3,23 @@
 		<div class="fixed row">
 			<lp-input name = "item.name"  input-type="item.type" value="item.value" class="col-md-10" ng-repeat="item in vm.inputsForm"></lp-input>
 			<lp-datepicker></lp-datepicker>
+			    <h2 class="md-title">Use a custom chip template.</h2>
+    <form name="fruitForm">
+      <md-chips ng-model="ctrl.roFruitNames" name="fruitName" readonly="ctrl.readonly" md-max-chips="5">
+        <md-chip-template>
+          <strong>{{$chip}}</strong>
+          <em>(fruit)</em>
+        </md-chip-template>
+      </md-chips>
+      <div class="errors" ng-messages="fruitForm.fruitName.$error">
+        <div ng-message="md-max-chips">The maxmium of chips is reached.</div>
+      </div>
+    </form>
+			<p>Gender: <span class="radioValue">{{ data.group1 }}</span> </p>
+			<md-radio-group ng-model="data.group1">
+			<md-radio-button value="Male" class="md-primary">Male</md-radio-button>
+			<md-radio-button value="Female" class="md-primary"> Female </md-radio-button>
+			</md-radio-group>
 			<lp-button name="vm.button.name" on-click="vm.button.onClick"></lp-button>
 		</div>
 	</div>

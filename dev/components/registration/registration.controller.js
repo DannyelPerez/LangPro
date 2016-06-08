@@ -23,12 +23,16 @@
             type: 'password'
         }];
 
-        vm.datePicker = {
+        vm.datepicker = {
             name: 'picker',
             value: ''
         }
+        vm.chips = {
+            contents:'',
+            readonly:'readonly'
+        }
         vm.button = {
-            name: 'Boton',
+            name: 'Register',
             onClick: function() {
                 $state.go('login', {
                     param1: 'esta',
