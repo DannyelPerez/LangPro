@@ -3,9 +3,9 @@
 
     angular.module("AppProject")
         .controller("loginController", loginController);
-    loginController.$inject = ['$stateParams'];
+    loginController.$inject = ['$stateParams', 'toaster'];
 
-    function loginController($stateParams) {
+    function loginController($stateParams, toaster) {
         var vm = this;
         vm.username = {
             name: 'Username',
@@ -24,6 +24,11 @@
             }
         }
         console.log($stateParams);
-
+        toaster.pop({
+                type: 'error',
+                title: 'Title text',
+                body: 'Body text',
+                showCloseButton: true
+            });
     }
 })();

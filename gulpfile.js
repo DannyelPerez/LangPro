@@ -12,6 +12,7 @@ path.dev = {};
 path.public = {};
 
 path.dev.app = "dev/";
+path.dev.modules = "node_modules/";
 
 path.dev.styles = {};
 
@@ -31,7 +32,8 @@ var thirdPartyLibs = [
     path.dev.bower + "angular-ui-router/release/angular-ui-router.min.js",
     path.dev.bower + "angular-aria/angular-aria.min.js",
     path.dev.bower + "angular-animate/angular-animate.min.js",
-    path.dev.bower + "angular-material/angular-material.min.js"
+    path.dev.bower + "angular-material/angular-material.min.js",
+    path.dev.modules + "angularjs-toaster/toaster.min.js"
 ];
 
 var scripts = [
@@ -44,7 +46,8 @@ var scripts = [
 var stylesSource = [
     path.dev.bower + "bootstrap/dist/css/bootstrap.min.css",
     path.dev.bower + "angular-material/angular-material.min.css",
-    path.dev.app + "assets/css/roboto.css"
+    path.dev.app + "assets/css/roboto.css",
+    path.dev.modules + "angularjs-toaster/toaster.min.css"
 ]
 
 gulp.task("css-Components", function() {
