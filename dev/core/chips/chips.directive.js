@@ -10,7 +10,9 @@
         return {
             restrict: 'E',
             scope: {
-                content:'=?'
+                values:'=?',
+                buffer:'=?',
+                title:'=?'
             },
             controller : 'chipsController as vm',
             templateUrl: 'dev/core/chips/chips.html'

@@ -1,1 +1,6 @@
-<md-chips ng-model="content" readonly="readonly"></md-chips>
+<div layout="column" ng-cloak="" class="chipsdemoContactChips">
+	<md-content class="md-padding autocomplete" layout="column">
+	<md-contact-chips ng-model="values" md-contacts="vm.delayedQuerySearch($query)" md-contact-name="name" md-require-match="true" md-highlight-flags="i" filter-selected="vm.filterSelected" placeholder="{{title}}">
+	</md-contact-chips>
+	</md-content>
+</div>
