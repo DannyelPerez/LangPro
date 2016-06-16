@@ -14,15 +14,20 @@
         $urlRouterProvider.otherwise("/home");
 
         $stateProvider
-            .state("home", {
+            .state("dashboard.home", {
                 url: "/home",
                 templateUrl: templatesUrl + "home/home.html",
                 controller: "homeController as vm"
             })
-            .state("login", {
+            .state("dashboard.login", {
                 url: "/login",
                 templateUrl: templatesUrl + "login/login.html",
                 controller: "loginController as vm"
+            })
+            .state("dashboard.project", {
+                url: "/project",
+                templateUrl: templatesUrl + "project/project.html",
+                controller: "projectController as vm"
             })
             .state("verified", {
                 url: "/verified/{uid}/&token={token}",
@@ -33,6 +38,10 @@
                 url: "/registration",
                 templateUrl: templatesUrl + "registration/registration.html",
                 controller: "registrationController as vm"
+            })
+            .state("dashboard", {
+                templateUrl: templatesUrl + "dashboard/dashboard.html",
+                controller: "dashboardController as vm"
             });
     }
 

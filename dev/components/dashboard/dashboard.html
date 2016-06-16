@@ -1,0 +1,39 @@
+<div class="home">
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>
+		<md-button class="md-icon-button" aria-label="Options" ng-click="vm.openSideNavPanel()">
+		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+		<md-tooltip>Options</md-tooltip>
+		</md-button>
+		<span ng-click="vm.redirectLogin()">Login</span>
+		<!-- <a ui-sref="login">Login</a> -->
+		<span ng-click="vm.redirectProject()">Project</span>
+		</h2>
+	</div>
+	</md-toolbar>
+
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+	md-component-id="left">
+	<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h2>
+		<span>Options</span>
+		</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" aria-label="Close Side Panel" ng-click="vm.closeSideNavPanel()">
+		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+		<md-tooltip>Close Options</md-tooltip>
+		</md-button>
+	</div>
+	</md-toolbar>
+	<md-content layout-padding="">
+	Side navigation Panel
+	</md-content>
+	</md-sidenav>
+
+	<!-- <a ui-sref="dashboard.home">Tus nalguitas</a> -->
+	<!-- <a ui-sref="dashboard.login">Tus nalguitas</a> -->
+	<div ui-view></div>
+
+</div>

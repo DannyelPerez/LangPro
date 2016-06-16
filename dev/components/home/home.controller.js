@@ -3,10 +3,9 @@
 
     angular.module("AppProject")
         .controller("homeController", homeController);
-    homeController.$inject = [];
+    homeController.$inject = ['$state', '$mdSidenav', '$scope'];
 
-    function homeController() {
+    function homeController($state, $mdSidenav, $scope) {
         var vm = this;
-        vm.test = "HelloWorld";
     }
 })();
