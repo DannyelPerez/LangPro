@@ -5,4 +5,22 @@
 	.otro{
 		background-color: blue;
 	}
+
+	.carddemoBasicUsage {
+	md-card {
+		min-height: 250px;
+	}
+}
+md-card {
+	> {
+		&:not(md-card-content) {
+			img {
+				box-sizing: border-box;
+			}
+		}
+	}
+	>img {
+		box-sizing: border-box;
+	}
+}
 }
