@@ -11,7 +11,7 @@
 
     function setupRoutes($stateProvider, $urlRouterProvider) {
         let templatesUrl = "dev/components/";
-        $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider
             .state("dashboard.home", {
