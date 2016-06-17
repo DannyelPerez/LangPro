@@ -3,12 +3,21 @@
 
     angular.module("AppProject")
         .controller("verifiedController", verifiedController);
-    verifiedController.$inject = ['$stateParams', '$location', '$state', 'authenticationService'];
+    verifiedController.$inject = ['$stateParams', '$location', '$state', 'authenticationService', 'toaster'];
 
-    function verifiedController($stateParams, $location, $state, authenticationService) {
+    function verifiedController($stateParams, $location, $state, authenticationService, toaster) {
         var vm = this;
+        if (!$stateParams)
+            return;
+        authenticationService.confirmEmail($stateParams.uid, $stateParams.token, function(response) {
+            toaster.pop({
+                type: 'success',
+                title: 'Enhorabuena',
+                body: 'Usuario verificado exitosamente',
+                showCloseButton: true
+            });
+        });
         console.log($stateParams);
-        console.log($location);
         vm.cards = [{
             icon: 'glyphicon glyphicon-user',
             title: 'Encuentra Personas',
@@ -24,7 +33,7 @@
         }];
 
         vm.button = {
-            name: "Commenzar",
+            name: "Iniciar Sesion",
             onClick: function() {
                 $state.go('login');
             }
