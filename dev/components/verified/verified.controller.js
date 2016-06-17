@@ -9,14 +9,14 @@
         var vm = this;
         if (!$stateParams)
             return;
-        authenticationService.confirmEmail($stateParams.uid, $stateParams.token, function(response) {
-            toaster.pop({
-                type: 'success',
-                title: 'Enhorabuena',
-                body: 'Usuario verificado exitosamente',
-                showCloseButton: true
-            });
-        });
+        // authenticationService.confirmEmail($stateParams.uid, $stateParams.token, function(response) {
+        //     toaster.pop({
+        //         type: 'success',
+        //         title: 'Enhorabuena',
+        //         body: 'Usuario verificado exitosamente',
+        //         showCloseButton: true
+        //     });
+        // });
         console.log($stateParams);
         vm.cards = [{
             icon: 'glyphicon glyphicon-user',
