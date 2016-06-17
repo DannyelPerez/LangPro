@@ -28,8 +28,6 @@
 			<md-not-found>
 			No results with:"{{vm.searchText}}" were found.
 			</md-not-found>
-			<ng-keypress ng-keypress="printOut()">
-			</ng-keypress>
 			</md-autocomplete>
 		</div>
 		<div class="searchicon">
@@ -42,17 +40,43 @@
 	<md-toolbar layout="row">
 	<div class="md-toolbar-tools">
 		<h2>
-		<span>Options</span>
+		<span>Menu</span>
 		</h2>
 		<span flex></span>
 		<md-button class="md-icon-button" aria-label="Close Side Panel" ng-click="vm.closeSideNavPanel()">
 		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-		<md-tooltip>Close Options</md-tooltip>
+		<md-tooltip>Close Menu</md-tooltip>
 		</md-button>
 	</div>
 	</md-toolbar>
 	<md-content layout-padding="">
-	Side navigation Panel
+	<md-list>
+	<md-subheader class="md-no-sticky">Options</md-subheader>
+	<md-list-item ng-click="vm.redirectLogin()">
+	<p>My Profile</p>
+	<div class="md-secondary">
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+	</div>
+	</md-list-item>
+	<md-list-item ng-click="vm.redirectProject()">
+	<p>My Projects</p>
+	<div class="md-secondary">
+		<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+	</div>
+	</md-list-item>
+	<md-list-item ng-click="vm.redirectProject()">
+	<p>My Forums</p>
+	<div class="md-secondary">
+		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+	</div>
+	</md-list-item>
+	<md-list-item ng-click="vm.redirectProject()">
+	<p>Sign out</p>
+	<div class="md-secondary">
+		<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+	</div>
+	</md-list-item>
+	</md-list>
 	</md-content>
 	</md-sidenav>
 	<div ui-view></div>

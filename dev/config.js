@@ -29,6 +29,11 @@
                 templateUrl: templatesUrl + "projectsView/projectsView.html",
                 controller: "projectsViewController as vm"
             })
+            .state("dashboard.singleProjectView", {
+                url: "/singleProjectView",
+                templateUrl: templatesUrl + "singleProjectView/singleProjectView.html",
+                controller: "singleProjectViewController as vm"
+            })
             .state("verified", {
                 url: "/verified/{uid}/&token={token}",
                 templateUrl: templatesUrl + "verified/verified.html",
