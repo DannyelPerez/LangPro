@@ -1,9 +1,9 @@
-<body class="home" style="background-color:#cecece">
-  <div>
+<div ng-controller="homeController as vm" class="projects">
+	<div>
     <md-content layout="column" layout-gt-xs="row" style="background-color:#cecece" ng-repeat="item in vm.cards">
       <md-card flex flex-gt-md="30" ng-repeat="item2 in item.row">
         <img src="{{item2.image}}" class="md-card-image" alt="Washed Out">
-        <md-card-content>
+        <md-card-content class="contents">
           <h2 class="md-title">{{item2.title}}</h2>
           <p>
           {{item2.desc}}
@@ -13,5 +13,4 @@
       <br>
     </md-content>
   </div>
-
-  <body>
+</div>

@@ -24,10 +24,10 @@
                 templateUrl: templatesUrl + "login/login.html",
                 controller: "loginController as vm"
             })
-            .state("dashboard.project", {
-                url: "/project",
-                templateUrl: templatesUrl + "project/project.html",
-                controller: "projectController as vm"
+            .state("dashboard.projectsView", {
+                url: "/projectsView",
+                templateUrl: templatesUrl + "projectsView/projectsView.html",
+                controller: "projectsViewController as vm"
             })
             .state("verified", {
                 url: "/verified/{uid}/&token={token}",

@@ -7,12 +7,36 @@
 		<md-tooltip>Options</md-tooltip>
 		</md-button>
 		<span ng-click="vm.redirectLogin()">Login</span>
-		<!-- <a ui-sref="login">Login</a> -->
 		<span ng-click="vm.redirectProject()">Project</span>
 		</h2>
+		<div class="searchbar" ng-show="vm.isActive">
+			<md-autocomplete
+			ng-disabled="vm.isDisabled"
+			md-no-cache="vm.noCache"
+			md-selected-item="vm.selectedItem"
+			md-search-text-change="vm.searchTextChange(vm.searchText)"
+			md-search-text="vm.searchText"
+			md-selected-item-change="vm.selectedItemChange(item)"
+			md-items="item in vm.querySearch(vm.searchText)"
+			md-item-text="item.display"
+			md-min-length="0"
+			placeholder="Search"
+			>
+			<md-item-template>
+			<span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+			</md-item-template>
+			<md-not-found>
+			No results with:"{{vm.searchText}}" were found.
+			</md-not-found>
+			<ng-keypress ng-keypress="printOut()">
+			</ng-keypress>
+			</md-autocomplete>
+		</div>
+		<div class="searchicon">
+			<span ng-click="vm.showSearchbar()" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</div>
 	</div>
 	</md-toolbar>
-
 	<md-sidenav class="md-sidenav-left md-whiteframe-z2"
 	md-component-id="left">
 	<md-toolbar layout="row">
@@ -31,9 +55,5 @@
 	Side navigation Panel
 	</md-content>
 	</md-sidenav>
-
-	<!-- <a ui-sref="dashboard.home">Tus nalguitas</a> -->
-	<!-- <a ui-sref="dashboard.login">Tus nalguitas</a> -->
 	<div ui-view></div>
-
 </div>
