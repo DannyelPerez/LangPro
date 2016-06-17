@@ -39,7 +39,7 @@
                 image: 'images/pc.png',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
-            }],
+            }]
         }, {
             row: [{
                 image: 'https://material.angularjs.org/latest/img/washedout.png',
@@ -53,7 +53,7 @@
                 image: 'images/pc.png',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
-            }],
+            }]
         }];
     }
 })();

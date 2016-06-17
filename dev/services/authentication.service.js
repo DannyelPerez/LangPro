@@ -10,13 +10,17 @@
     ];
 
     function authenticationService($http, $location) {
-        var url = $location.$$protocol + "://" + path.$$host + ":" + path.$$port + "/QM/oData";
+        var url = "http://backendfindmecoworker.herokuapp.com/api/";
+
+        function errorCallback(response) {
+            console.log(response);
+        }
         return {
-        	confirmEmail: function(uid, token, handleSuccess){
-        		let url = webApiUrl 
-        		$http.get(url).then(successCallback)
-                      .catch(errorCallback);
-        	}
+            confirmEmail: function(uid, token, handleSuccess) {
+                let url = webApiUrl
+                $http.get(url + 'USERS/confirm(object={"uid":' + uid + ',"token":' + token + '})').then(successCallback)
+                    .catch(errorCallback);
+            }
         };
     };
 })();

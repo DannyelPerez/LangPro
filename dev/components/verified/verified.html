@@ -1,1 +1,30 @@
-<p>verified</p>
+<div class="verified-view">
+<header class="header"></header>
+<div class=" container description">
+		<h1 class="col-md-12">Iniciar Sesion</h1>
+		<lp-button name="vm.button.name" on-click="vm.button.onClick"></lp-button>
+		<div class="row">
+			<div class="col-md-4 card" ng-repeat="item in vm.cards">
+				<div class="row">
+					<div class="col-md-12 icon">
+						<span class="{{item.icon}}" aria-hidden="true"></span>
+					</div>
+				</div>
+				<div class="row title">
+					<div class="col-md-12">{{item.title}}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 subtitle">
+						{{item.subtitle}}
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<footer class="footer">
+	<div>
+		<h1>Find Me Coworker</h1>
+		<h3>Proyecto de Lenguajes 2016</h3>
+	</div>
+</footer>
+</div>

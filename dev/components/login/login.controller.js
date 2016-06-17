@@ -23,12 +23,5 @@
                 console.log(vm.email.value);
             }
         }
-        console.log($stateParams);
-        toaster.pop({
-                type: 'error',
-                title: 'Title text',
-                body: 'Body text',
-                showCloseButton: true
-            });
     }
 })();
