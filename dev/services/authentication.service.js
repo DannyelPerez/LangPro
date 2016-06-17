@@ -55,6 +55,9 @@
             },
             logout: function() {
                 window.localStorage['Session'] = "";
+                $http.post(url + 'USERS/logout?access_token=' + $rootScope.globals.token).then(function() {
+                    $location.path('/login');
+                }).catch(errorCallback);
             }
         };
     };
