@@ -8,6 +8,5 @@
     function homeController($state, $mdSidenav, $scope) {
         var vm = this;
         vm.urlTemplate = 'dev/components/home/projectsTab/projectsTab.html';
-
     }
 })();

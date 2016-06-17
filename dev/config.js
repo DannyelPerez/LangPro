@@ -11,7 +11,7 @@
 
     function setupRoutes($stateProvider, $urlRouterProvider) {
         let templatesUrl = "dev/components/";
-        $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider
             .state("dashboard.home", {
@@ -19,7 +19,7 @@
                 templateUrl: templatesUrl + "home/home.html",
                 controller: "homeController as vm"
             })
-            .state("dashboard.login", {
+            .state("login", {
                 url: "/login",
                 templateUrl: templatesUrl + "login/login.html",
                 controller: "loginController as vm"

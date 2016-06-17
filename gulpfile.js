@@ -33,7 +33,8 @@ var thirdPartyLibs = [
     path.dev.bower + "angular-aria/angular-aria.min.js",
     path.dev.bower + "angular-animate/angular-animate.min.js",
     path.dev.bower + "angular-material/angular-material.min.js",
-    path.dev.modules + "angularjs-toaster/toaster.min.js"
+    path.dev.modules + "angularjs-toaster/toaster.min.js",
+    path.dev.bower + "angular-cookies/angular-cookies.min.js"
 ];
 
 var scripts = [
