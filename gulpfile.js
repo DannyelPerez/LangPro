@@ -54,8 +54,8 @@ var stylesSource = [
 gulp.task("css-Components", function() {
     return gulp.src(path.dev.styles.components + "components.less")
         .pipe(less({
-            paths: [pathReq.join(__dirname, "less", "includes")],
-            compress: true
+            paths: [pathReq.join(__dirname, "less", "includes")]//,
+            // compress: true
         }))
         .pipe(gulp.dest(path.public.css));
 });
