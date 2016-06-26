@@ -9,12 +9,14 @@
         var vm = this;
         vm.cards = []
         requestsService.getForums(function(response) {
-        	console.log(response);
             response.data.forEach(function(element, index) {
                 vm.cards.push({
                     title: element.NAME,
                     desc: element.DESCRIPTION,
                     data: element,
+                    onClick: function(data){
+                    	console.log(data);
+                    },
                     image: 'https://material.angularjs.org/latest/img/washedout.png'
                 });
             });
