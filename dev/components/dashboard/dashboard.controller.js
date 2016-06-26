@@ -3,15 +3,18 @@
 
     angular.module("AppProject")
         .controller("dashboardController", dashboardController);
-    dashboardController.$inject = ['$state', '$mdSidenav', '$scope'];
+    dashboardController.$inject = ['$state', '$mdSidenav', '$scope','utilities'];
 
-    function dashboardController($state, $mdSidenav, $scope) {
+    function dashboardController($state, $mdSidenav, $scope, utilities) {
         var vm = this;
         vm.test = "HelloWorld";
         vm.currentNavItem = 'home';
         vm.isActive = false;
         vm.simulateQuery = true;
         vm.isDisabled = false;
+        vm.round = true;
+
+        utilities.setCurrentTab('PROJECTS');
 
         vm.redirectLogin = function() {
             $state.go("dashboard.login", {});
@@ -40,53 +43,46 @@
                 alert('I am an alert');
         };
 
-        function querySearch(query) {
-            var results = query ? vm.states.filter(createFilterFor(query)) : vm.states,
-                deferred;
-            if (vm.simulateQuery) {
-                deferred = $q.defer();
-                $timeout(function() {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
+        function dummy(){
+            alert('arreglar el redireccionamiento');
+        }
+
+        vm.panelOptions = [
+            {
+                title: 'My Profile',
+                onClick : dummy,
+                icon: 'glyphicon glyphicon-user',
+                color: '#E91E63'
+            },{
+                title: 'My Projects',
+                onClick : dummy,
+                icon: 'glyphicon glyphicon-folder-open',
+                color: '#8BC34A'
+            },{
+                title: 'My Forums',
+                onClick : dummy,
+                icon: 'glyphicon glyphicon-list-alt',
+                color: '#FF5722'
+            },{
+                title: 'Sign out',
+                onClick : dummy,
+                icon: 'glyphicon glyphicon-off',
+                color: '#9E9E9E'
+            },
+        ];
+
+        vm.addNewButton = {
+            name:'Add',
+            round: true,
+            icon: 'glyphicon-plus',
+            onClick: function(){
+                if(utilities.getCurrentTab()==='PROJECTS')
+                    alert('go to create new project');
+                else
+                    alert('go to create new forum');
             }
         }
 
-        function searchTextChange(text) {
-            $log.info('Text changed to ' + text);
-        }
 
-        function selectedItemChange(item) {
-            $log.info('Item changed to ' + JSON.stringify(item));
-        }
-        /**
-         * Build `states` list of key/value pairs
-         */
-        function loadAll() {
-            var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-            return allStates.split(/, +/g).map(function(state) {
-                return {
-                    value: state.toLowerCase(),
-                    display: state
-                };
-            });
-        }
-        /**
-         * Create filter function for a query string
-         */
-        function createFilterFor(query) {
-            var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(state) {
-                return (state.value.indexOf(lowercaseQuery) === 0);
-            };
-        }
     }
 })();

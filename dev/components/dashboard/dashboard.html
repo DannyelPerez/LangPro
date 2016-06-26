@@ -1,4 +1,4 @@
-<div class="home">
+<div class="dashboard">
 	<md-toolbar>
 	<div class="md-toolbar-tools">
 		<h2>
@@ -52,32 +52,17 @@
 	<md-content layout-padding="">
 	<md-list>
 	<md-subheader class="md-no-sticky">Options</md-subheader>
-	<md-list-item ng-click="vm.redirectLogin()">
-	<p>My Profile</p>
-	<div class="md-secondary">
-		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-	</div>
-	</md-list-item>
-	<md-list-item ng-click="vm.redirectProject()">
-	<p>My Projects</p>
-	<div class="md-secondary">
-		<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-	</div>
-	</md-list-item>
-	<md-list-item ng-click="vm.redirectProject()">
-	<p>My Forums</p>
-	<div class="md-secondary">
-		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-	</div>
-	</md-list-item>
-	<md-list-item ng-click="vm.redirectProject()">
-	<p>Sign out</p>
-	<div class="md-secondary">
-		<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+	<md-list-item ng-click="item.onClick()"  class="list-element-option" ng-repeat="item in vm.panelOptions">
+	<lp-button round="vm.round" 
+	icon="item.icon" color="item.color" mini="vm.round" ></lp-button>
+	<div class="md-primary title-option">
+		<p>{{item.title}}</p>
 	</div>
 	</md-list-item>
 	</md-list>
 	</md-content>
 	</md-sidenav>
-	<div ui-view></div>
+	<lp-button arial-label="vm.addNewButton.name" on-click="vm.addNewButton.onClick" round="vm.addNewButton.round" 
+	icon="vm.addNewButton.icon" class="add-new"></lp-button>
+	<div ui-view class="view-area"></div>
 </div>

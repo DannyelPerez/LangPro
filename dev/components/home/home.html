@@ -2,16 +2,18 @@
     <div>
         <md-content>
         <md-tabs md-dynamic-height="" md-border-bottom="" md-center-tabs=true md-stretch-tabs='always'>
-        <md-tab label="projects">
+        <md-tab label="projects" ng-click=" vm.changeCurrentTab('PROJECTS')">
         <md-content class="md-padding">
         <div class="contents">
             <div ng-include="vm.urlTemplate"></div>
         </div>
         </md-content>
         </md-tab>
-        <md-tab label="forums">
+        <md-tab label="forums" ng-click=" vm.changeCurrentTab('FORUMS')">
         <md-content class="md-padding">
-        <h1 class="md-display-2">Forums</h1>
+            <div class="contents">
+                <div ng-include="vm.urlForums"></div>
+            </div>
         </md-content>
         </md-tab>
         </md-tabs>
