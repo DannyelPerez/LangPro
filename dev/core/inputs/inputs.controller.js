@@ -13,7 +13,7 @@
         vm.changeShowHintsValue = function() {
             if (!vm.hasHint)
                 return;
-            return $scope.valueModel.match($scope.pattern) === undefined ? false : true;
+            return $scope.model.value.match($scope.pattern) === undefined ? false : true;
         }
 
     }

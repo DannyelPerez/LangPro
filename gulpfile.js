@@ -34,7 +34,8 @@ var thirdPartyLibs = [
     path.dev.bower + "angular-animate/angular-animate.min.js",
     path.dev.bower + "angular-material/angular-material.min.js",
     path.dev.modules + "angularjs-toaster/toaster.min.js",
-    path.dev.bower + "angular-cookies/angular-cookies.min.js"
+    path.dev.bower + "angular-cookies/angular-cookies.min.js",
+    path.dev.modules +"angular-jk-carousel/dist/jk-carousel.min.js"
 ];
 
 var scripts = [
@@ -48,7 +49,8 @@ var stylesSource = [
     path.dev.bower + "bootstrap/dist/css/bootstrap.min.css",
     path.dev.bower + "angular-material/angular-material.min.css",
     path.dev.app + "assets/css/roboto.css",
-    path.dev.modules + "angularjs-toaster/toaster.min.css"
+    path.dev.modules + "angularjs-toaster/toaster.min.css",
+    path.dev.modules +"angular-jk-carousel/dist/jk-carousel.min.css"
 ]
 
 gulp.task("css-Components", function() {
