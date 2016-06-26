@@ -1,4 +1,4 @@
 (function(){
 	"use strict";
-	angular.module("AppProject",['ui.router','ngMaterial','toaster','ngCookies','ngAnimate']);
+	angular.module("AppProject",['ui.router','ngMaterial','toaster','ngCookies','ngAnimate','jkAngularCarousel']);
 })();

@@ -39,6 +39,9 @@
             },
             projectUser: function(userData, success) {
                 $http.post(url + "USERS_PROJECTS", JSON.stringify(userData)).then(success).catch(errorCallback);
+            },
+            getProjectLanguage: function(id, success) {
+                $http.get(url + "PROJECTS_LANGUAGES/"+id).then(success).catch(errorCallback);
             }
         };
     };
