@@ -1,10 +1,17 @@
 <div class="registerProject">
 	<div class = "container">
 		<div class="fixed row">
-			<lp-input name = "field.name" value= "field.value" input-type="field.type" class="col-md-10" ng-repeat="field in vm.inputsForm"></lp-input>
-			<lp-chips title="vm.languages.title" buffer="vm.languages.buffer" values="vm.languages.values" class="col-md-11 chAlign"></lp-chips>
-			<lp-chips title="vm.users.title" buffer="vm.users.buffer" values="vm.users.values" class="col-md-11 chAlign"></lp-chips>
-			<lp-button name="vm.button.name" on-click="vm.button.onClick"></lp-button>
+			<form name="submitProjectForm">
+				<lp-input title = "field.title" name = "field.name" value-model= "field.value" class="col-md-10" ng-repeat="field in vm.inputsForm"></lp-input>
+				<lp-chips title="vm.languages.title" buffer="vm.languages.buffer" values="vm.languages.values" class="col-md-11 chAlign"></lp-chips>
+				<lp-chips title="vm.users.title" buffer="vm.users.buffer" values="vm.users.values" class="col-md-11 chAlign"></lp-chips>
+				<lp-chips title="vm.purposes.title" buffer="vm.purposes.buffer" values="vm.purposes.values" class="col-md-11 chAlign"></lp-chips>
+				<lp-input title = "vm.description.title" value-model= "vm.description.value"  max-length="vm.description.length" class="col-md-10" form-name="vm.description.formname " name="vm.description.name" 
+				message-exps='vm.description.messageExps'
+				error-message='vm.description.errorMessage'></lp-input>
+				<lp-button name="vm.button.name" on-click="vm.button.onClick"></lp-button>
+			</form>
 		</div>
 	</div>
+</div>
 </div>

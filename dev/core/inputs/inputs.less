@@ -1,5 +1,36 @@
 .lp-input{
-	.width-size{
-		width: 100%;
+
+	.inputdemoErrorsAdvanced {
+		.hint {
+			bottom: 7px;
+			color: grey;
+			font-size: 12px;
+			left: 2px;
+			line-height: 14px;
+			position: absolute;
+			right: auto;
+			transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+		}
+		.hint.ng-hide {
+			bottom: 26px;
+			opacity: 0;
+		}
+		.hint.ng-enter {
+			bottom: 26px;
+			opacity: 0;
+		}
+		.hint.ng-leave {
+			bottom: 7px;
+			opacity: 1;
+		}
+		.hint.ng-leave.ng-leave-active {
+			bottom: 26px;
+			opacity: 0;
+		}
+		.hint.ng-enter.ng-enter-active {
+			bottom: 7px;
+			opacity: 1;
+		}
 	}
+
 }
