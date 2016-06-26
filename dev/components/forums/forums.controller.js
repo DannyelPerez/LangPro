@@ -1,12 +1,12 @@
-// (function() {
-//     "use strict";
+(function() {
+    "use strict";
 
-//     angular.module("AppProject")
-//         .controller("registerProjectViewController", registerProjectViewController);
-//     registerProjectViewController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService'];
+    angular.module("AppProject")
+        .controller("forumsController", forumsController);
+    forumsController.$inject = ['$state', 'requestsService'];
 
-//     function registerProjectViewController($state, $mdSidenav, $scope, requestsService) {
-//         var vm = this;
+    function forumsController($state, requestsService) {
+        var vm = this;
 
-//     }
-// })();
+    }
+})();

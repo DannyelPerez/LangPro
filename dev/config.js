@@ -44,6 +44,11 @@
                 templateUrl: templatesUrl + "registration/registration.html",
                 controller: "registrationController as vm"
             })
+            .state("dashboard.newForum", {
+                url: "/newForum",
+                templateUrl: templatesUrl + "forums/forums.html",
+                controller: "forumsController as vm"
+            })
             .state("dashboard", {
                 templateUrl: templatesUrl + "dashboard/dashboard.html",
                 controller: "dashboardController as vm"
