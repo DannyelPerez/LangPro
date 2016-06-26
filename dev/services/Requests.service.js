@@ -47,6 +47,9 @@
             },
             createForum: function(data, success) {
                 $http.post(url + "FORUMS", JSON.stringify(data)).then(success).catch(errorCallback);
+            },
+            getForums: function(success) {
+                $http.get(url + "FORUMS").then(success).catch(errorCallback);
             }
         };
     };

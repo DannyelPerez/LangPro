@@ -74,6 +74,7 @@
                     body: 'Forum created successfully',
                     showCloseButton: true
                 });
+                setTimeout($state.go('dashboard.home'), 3000);
             });
         }
 
