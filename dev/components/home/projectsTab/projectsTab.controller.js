@@ -18,7 +18,7 @@
                 title: 'This is the title 1',
                 desc: "This is the first card"
             }, {
-                image: 'images/pc.png',
+                image: 'images/go.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }]
@@ -29,15 +29,15 @@
                 title: 'This is the title 1',
                 desc: "This is the first card"
             }, {
-                image: 'images/pc.png',
+                image: 'images/js.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }, {
-                image: 'images/pc.png',
+                image: 'images/node.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }, {
-                image: 'images/pc.png',
+                image: 'images/go.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }]
@@ -47,11 +47,11 @@
                 title: 'This is the title 1',
                 desc: "This is the first card"
             }, {
-                image: 'images/pc.png',
+                image: 'images/go.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }, {
-                image: 'images/pc.png',
+                image: 'images/js.jpg',
                 title: 'This is the title 2',
                 desc: 'This is the second card'
             }]
