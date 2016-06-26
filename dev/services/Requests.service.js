@@ -23,7 +23,7 @@
                 $http.post(url + "USERS", JSON.stringify(userData)).then(success).catch(errorCallback);
             },
             userLanguage: function(langData, success) {
-                $http.post(url + "USERS_LENGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
+                $http.post(url + "USERS_LANGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
             },
             getUser: function(success) {
                 $http.get(url + "USERS").then(success).catch(errorCallback);
@@ -35,7 +35,7 @@
                 $http.post(url + "PROJECTS", JSON.stringify(projectData)).then(success).catch(errorCallback);
             },
             projectLanguage: function(langData, success) {
-                $http.post(url + "PROJECTS_LENGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
+                $http.post(url + "PROJECTS_LANGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
             },
             projectUser: function(userData, success) {
                 $http.post(url + "USERS_PROJECTS", JSON.stringify(userData)).then(success).catch(errorCallback);

@@ -7,6 +7,8 @@
 
     function registerProjectViewController($state, $mdSidenav, $scope, requestsService) {
         var vm = this;
+        vm.langResponse = false;
+        vm.userResponse = false;
 
         requestsService.getLanguage(function(response) {
             response.data.forEach(function(element) {
@@ -42,7 +44,7 @@
 
         vm.description = {
             title: 'Description',
-            value: '',
+            model:{value: ''},
             length: 100,
             messageExps: ['maxlength'],
             errorMessage: "Field should not exceed limit length",
@@ -53,15 +55,16 @@
 
         vm.inputsForm = [{
             title: 'Project Name',
-            value: '',
+            model:{value: ''},
             name: 'project'
         }, {
             title: 'Max Users',
-            value: '',
-            name: 'maxuser'
+            model:{value: ''},
+            name: 'maxuser',
+            type:'Numeric'
         }, {
             title: ' Git Repository ',
-            value: '',
+            model:{value: ''},
             name: 'git'
         }];
 
@@ -69,11 +72,11 @@
             name: 'Submit',
             onClick: function() {
                 let obj = {
-                    "NAME": vm.inputsForm[0].value,
-                    "MAXUSERS": vm.inputsForm[1].value,
-                    "REPOSITORY": vm.inputsForm[2].value,
-                    "DESCRIPTION": vm.description.value,
-                    "PURPOSEID":vm.purposes.values[0].id
+                    "NAME": vm.inputsForm[0].model.value,
+                    "MAXUSERS": vm.inputsForm[1].model.value,
+                    "REPOSITORY": vm.inputsForm[2].model.value,
+                    "DESCRIPTION": vm.description.model.value,
+                    "PURPOSEID": vm.purposes.values[0].id
                 }
                 console.log(obj);
                 requestsService.createProject(obj, function(response) {
@@ -83,7 +86,8 @@
                             PROJECTID: projectID,
                             LANGUAGEID: element.id
                         }, function(response) {
-
+                            vm.langResponse = response.length - 1 === index ? true : false;
+                            successProject();
                         });
                     });
                     vm.users.values.forEach(function(element, index) {
@@ -91,7 +95,8 @@
                             PROJECTID: projectID,
                             USERID: element.id
                         }, function(response) {
-
+                            vm.userResponse = response.length - 1 === index ? true : false;
+                            successProject();
                         });
                     });
                 });
@@ -114,6 +119,17 @@
             values: [],
             buffer: [],
             title: 'Purpose'
+        }
+
+        function successProject() {
+            if (vm.langResponse && vm.userResponse) {
+                toaster.pop({
+                    type: 'success',
+                    title: 'Success',
+                    body: 'Project created successfully!',
+                    showCloseButton: true
+                });
+            }
         }
     }
 })();
