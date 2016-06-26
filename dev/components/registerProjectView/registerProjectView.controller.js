@@ -3,9 +3,9 @@
 
     angular.module("AppProject")
         .controller("registerProjectViewController", registerProjectViewController);
-    registerProjectViewController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService'];
+    registerProjectViewController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService','toaster'];
 
-    function registerProjectViewController($state, $mdSidenav, $scope, requestsService) {
+    function registerProjectViewController($state, $mdSidenav, $scope, requestsService,toaster) {
         var vm = this;
         vm.langResponse = false;
         vm.userResponse = false;
@@ -86,7 +86,7 @@
                             PROJECTID: projectID,
                             LANGUAGEID: element.id
                         }, function(response) {
-                            vm.langResponse = response.length - 1 === index ? true : false;
+                            vm.langResponse = vm.languages.values.length - 1 === index ? true : false;
                             successProject();
                         });
                     });
@@ -95,7 +95,7 @@
                             PROJECTID: projectID,
                             USERID: element.id
                         }, function(response) {
-                            vm.userResponse = response.length - 1 === index ? true : false;
+                            vm.userResponse = vm.users.values.length - 1 === index ? true : false;
                             successProject();
                         });
                     });
