@@ -6,31 +6,18 @@
     dashboardController.$inject = ['$state',
         '$mdSidenav',
         '$scope',
-        'utilities',
-        '$location',
-        '$rootScope'
+        'utilities'
     ];
 
     function dashboardController($state, $mdSidenav, $scope,
-        utilities, $location, $rootScope) {
+        utilities) {
         var vm = this;
-        vm.test = "HelloWorld";
         vm.currentNavItem = 'home';
         vm.isActive = false;
         vm.simulateQuery = true;
         vm.isDisabled = false;
         vm.round = true;
-        vm.isInHomeView = true;
-
-
-        $rootScope.$on('$locationChangeStart', locationChangeStart);
-
-        function locationChangeStart(){
-            if($location.path() === '/home')
-                vm.isInHomeView = true;
-            else
-                vm.isInHomeView = false;
-        }
+        vm.utilities = utilities;
 
         utilities.setCurrentTab('PROJECTS');
 

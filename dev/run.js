@@ -3,9 +3,18 @@
 
     angular.module("AppProject").run(run);
 
-    run.$inject = ["$rootScope", "$http", "$state", "$timeout", "$location", '$cookieStore', '$stateParams'];
+    run.$inject = ["$rootScope",
+        "$http",
+        "$state",
+        "$timeout",
+        "$location",
+        '$cookieStore',
+        '$stateParams',
+        'utilities'
+    ];
 
-    function run($rootScope, $http, $state, $timeout, $location, $cookieStore, $stateParams) {
+    function run($rootScope, $http, $state, $timeout,
+        $location, $cookieStore, $stateParams, utilities) {
         $rootScope.Session = window.localStorage['Session'];
         getBasicAuthentication();
 
@@ -22,13 +31,18 @@
 
         function locationChangeStart(event, next, current) {
             if ($location.path() !== '/' && !$rootScope.globals.token &&
-                ($location.path()).match(/\/\S{8}\/\d\/\&\S{5}\=\S*/) == undefined
-                && $location.path() !== '/registration') {
+                ($location.path()).match(/\/\S{8}\/\d\/\&\S{5}\=\S*/) == undefined && $location.path() !== '/registration') {
                 $location.path('/login');
             }
 
             if ($location.path() === '/' && $rootScope.globals.token) {
                 $location.path('/home');
+            }
+
+            if ($location.path() === '/home') {
+                utilities.setShowAddButtonAndSearchBar(true);
+            } else {
+                utilities.setShowAddButtonAndSearchBar(false);
             }
         }
     }
