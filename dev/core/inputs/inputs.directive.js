@@ -21,7 +21,7 @@
                 max: '=?',
                 minLength: '=?',
                 maxLength: '=?',
-                valueModel: '=?',
+                model: '=?',
                 hintMessage: '=?',
                 messageExps: '=?'
             },
@@ -29,7 +29,6 @@
             templateUrl: 'dev/core/inputs/inputs.html',
             link: function(scope, element, attrs) {
                 scope.inputType = scope.inputType ? scope.inputType : 'text';
-                console.log(scope);
             }
         }
     };

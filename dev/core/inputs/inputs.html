@@ -1,22 +1,20 @@
 <div class="lp-input">
 	<md-input-container class="md-block" flex-gt-sm>
 	<label>{{title}}</label>
-	<input ng-if="required && !errorMessage" required name="{{name}}" ng-model="valueModel"
-	minlength="{{minLength}}" maxlength="{{maxLength}}"
+	<input ng-if="required && !errorMessage" required name="{{name}}" ng-model="model.value"	minlength="{{minLength}}" maxlength="{{maxLength}}"
 	ng-pattern="pattern" min="{{min}}" max="{{max}}"
 	ng-focus="vm.changeShowHintsValue()"
-	ng-blur="vm.changeShowHintsValue()"/>
-		<input ng-if="!required && !errorMessage" name="{{name}}" ng-model="valueModel"
-	minlength="{{minLength}}" maxlength="{{maxLength}}"
-	ng-pattern="pattern" min="{{min}}" max="{{max}}"
+	ng-blur="vm.changeShowHintsValue()" type="{{inputType}}" />
+	<input ng-if="!required && !errorMessage" name="{{name}}" 
+	ng-model="model.value" minlength="{{minLength}}" maxlength="{{maxLength}}" ng-pattern="pattern" min="{{min}}" max="{{max}}" type="{{inputType}}"
 	ng-focus="vm.changeShowHintsValue()"
 	ng-blur="vm.changeShowHintsValue()"/>
 	<div ng-if="errorMessage">
-		<input ng-if="!required" name="{{name}}" ng-model="valueModel"
+		<input ng-if="!required" name="{{name}}" ng-model="model.value"
 		minlength="{{minLength}}" maxlength="{{maxLength}}"
 		ng-pattern="pattern" min="{{min}}" max="{{max}}"
 		ng-focus="vm.changeShowHintsValue()"
-		ng-blur="vm.changeShowHintsValue()"/>
+		ng-blur="vm.changeShowHintsValue()" type="{{inputType}}"/>
 		<div class="hint" ng-show="vm.showHints">{{hintMessage}}</div>
 		<div ng-messages="[formName][name].$error" ng-hide="vm.showHints">
 			<div ng-message-exp="messageExps">

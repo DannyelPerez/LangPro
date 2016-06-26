@@ -3,26 +3,30 @@
 
     angular.module("AppProject")
         .controller("loginController", loginController);
-    loginController.$inject = ['$stateParams', 'toaster', 'authenticationService', '$state','$rootScope'];
+    loginController.$inject = ['$stateParams', 'toaster', 'authenticationService', '$state', '$rootScope'];
 
-    function loginController($stateParams, toaster, authenticationService, $state,$rootScope) {
+    function loginController($stateParams, toaster, authenticationService, $state, $rootScope) {
         var vm = this;
         authenticationService.clearCredentials();
         vm.email = {
             name: 'Email',
-            value: '',
+            model: {
+                value: ''
+            },
             type: 'email'
         };
         vm.password = {
             name: 'Contraseña',
-            value: '',
+            model: {
+                value: ''
+            },
             type: 'password'
         };
 
         vm.button = {
             name: 'Login',
             onClick: function() {
-                authenticationService.login(vm.email.value, vm.password.value, loginSuccess);
+                authenticationService.login(vm.email.model.value, vm.password.model.value, loginSuccess);
             }
         }
 

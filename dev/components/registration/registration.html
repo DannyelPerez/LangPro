@@ -1,7 +1,7 @@
 <div class="register">
 	<div class = "container">
 		<div class="fixed row">
-			<lp-input name = "item.name"  input-type="item.type" value="item.value" class="col-md-10" ng-repeat="item in vm.inputsForm"></lp-input>
+			<lp-input name = "item.name" title="item.name" input-type="item.type" model="item.model" class="col-md-10" ng-repeat="item in vm.inputsForm"></lp-input>
 			<lp-chips title="vm.languages.title" buffer="vm.languages.buffer" values="vm.languages.values" class="col-md-11 chAlign"></lp-chips>
 			<lp-button name="vm.button.name" on-click="vm.button.onClick"></lp-button>
 		</div>
