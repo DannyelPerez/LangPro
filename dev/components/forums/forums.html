@@ -1,5 +1,23 @@
 <div class="forums-view">
 	<div class="contents">
-		mierda
+		<div class="card">
+			<div class="forum-tags">
+			</div>
+			<div class="forum-wrapper">
+				<div class="header">
+					<div class="content">
+						<div class="user-initials">{{vm.initials}}</div>
+						<label class="user">{{vm.user}}</label>
+					</div>
+					<lp-input name="vm.question.name" model="vm.question.model" title="vm.question.name"></lp-input>
+				</div>
+				<md-input-container class="md-block">
+				<label>Description</label>
+				<textarea ng-model="vm.description" md-maxlength="250" rows="5" md-select-on-focus=""></textarea>
+				</md-input-container>
+				<lp-chips title="vm.languages.title" buffer="vm.languages.buffer" values="vm.languages.values" class="col-md-11 chAlign"></lp-chips>
+				<lp-button class="shareButton" name="vm.share.name" on-click="vm.share.onClick" color="vm.share.color"></lp-button>
+			</div>
+		</div>
 	</div>
 </div>

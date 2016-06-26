@@ -58,6 +58,9 @@
                 $http.post(url + 'USERS/logout?access_token=' + $rootScope.globals.token).then(function() {
                     $location.path('/login');
                 }).catch(errorCallback);
+            },
+            getUser: function(success) {
+                $http.get(url + "USERS/" + $rootScope.Session).then(success).catch(errorCallback);
             }
         };
     };

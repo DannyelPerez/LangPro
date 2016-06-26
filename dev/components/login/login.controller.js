@@ -34,6 +34,7 @@
             authenticationService.setCredentials(response.data.id);
             window.localStorage['Session'] =
                 $rootScope.Session = response.data.userId;
+                console.log($rootScope.Session);
             $state.go('dashboard.home');
         }
     }

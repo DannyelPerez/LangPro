@@ -6,11 +6,12 @@
     dashboardController.$inject = ['$state',
         '$mdSidenav',
         '$scope',
-        'utilities'
+        'utilities',
+        'authenticationService'
     ];
 
     function dashboardController($state, $mdSidenav, $scope,
-        utilities) {
+        utilities,authenticationService) {
         var vm = this;
         vm.currentNavItem = 'home';
         vm.isActive = false;
@@ -69,7 +70,7 @@
             color: '#FF5722'
         }, {
             title: 'Sign out',
-            onClick: dummy,
+            onClick: authenticationService.logout,
             icon: 'glyphicon glyphicon-off',
             color: '#9E9E9E'
         }, ];
@@ -82,7 +83,7 @@
                 if (utilities.getCurrentTab() === 'PROJECTS')
                     alert('go to create new project');
                 else
-                    alert('go to create new forum');
+                    $state.go('dashboard.newForum');
             }
         }
 

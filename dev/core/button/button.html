@@ -1,8 +1,11 @@
-<md-button ng-if="!round" class="md-raised md-primary" ng-click="onClick()">{{name}}</md-button>
+<md-button ng-if="!round && !color" class="md-raised md-primary" 
+ ng-click="onClick()"
+>{{name}}</md-button>
+<md-button ng-if="!round && color" class="md-raised md-primary" style="background-color: {{color}};" ng-click="onClick()"
+>{{name}}</md-button>
 <md-button ng-if="round && !color" class="md-fab {{miniClass}}" aria-label="{{arialLabel}}" ng-click="onClick()">
 <span class="glyphicon {{icon}}" aria-hidden="true"></span>
 </md-button>
-
 <md-button ng-if="round && color" class="md-fab {{miniClass}}" aria-label="{{arialLabel}}" ng-click="onClick()" style="background-color: {{color}};">
 <span class="glyphicon {{icon}}" aria-hidden="true"></span>
 </md-button>

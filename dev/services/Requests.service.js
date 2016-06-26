@@ -13,7 +13,12 @@
         var url = "http://backendfindmecoworker.herokuapp.com/api/";
 
         function errorCallback(response) {
-            console.log(response);
+            toaster.pop({
+                type: 'error',
+                title: response.data.error.name,
+                body: response.data.error.message,
+                showCloseButton: true
+            });
         }
         return {
             getLanguage: function(success) {
@@ -39,6 +44,9 @@
             },
             projectUser: function(userData, success) {
                 $http.post(url + "USERS_PROJECTS", JSON.stringify(userData)).then(success).catch(errorCallback);
+            },
+            createForum: function(data, success) {
+                $http.post(url + "FORUMS", JSON.stringify(data)).then(success).catch(errorCallback);
             }
         };
     };
