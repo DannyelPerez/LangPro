@@ -7,30 +7,18 @@
         '$mdSidenav',
         '$scope',
         'utilities',
-        '$location',
-        '$rootScope'
+        'authenticationService'
     ];
 
     function dashboardController($state, $mdSidenav, $scope,
-        utilities, $location, $rootScope) {
+        utilities,authenticationService) {
         var vm = this;
-        vm.test = "HelloWorld";
         vm.currentNavItem = 'home';
         vm.isActive = false;
         vm.simulateQuery = true;
         vm.isDisabled = false;
         vm.round = true;
-        vm.isInHomeView = true;
-
-
-        $rootScope.$on('$locationChangeStart', locationChangeStart);
-
-        function locationChangeStart(){
-            if($location.path() === '/home')
-                vm.isInHomeView = true;
-            else
-                vm.isInHomeView = false;
-        }
+        vm.utilities = utilities;
 
         utilities.setCurrentTab('PROJECTS');
 
@@ -82,7 +70,7 @@
             color: '#FF5722'
         }, {
             title: 'Sign out',
-            onClick: dummy,
+            onClick: authenticationService.logout,
             icon: 'glyphicon glyphicon-off',
             color: '#9E9E9E'
         }, ];
@@ -95,7 +83,7 @@
                 if (utilities.getCurrentTab() === 'PROJECTS')
                     alert('go to create new project');
                 else
-                    alert('go to create new forum');
+                    $state.go('dashboard.newForum');
             }
         }
 

@@ -30,7 +30,7 @@
 			</md-not-found>
 			</md-autocomplete>
 		</div>
-		<div class="searchicon" ng-show="vm.isInHomeView">
+		<div class="searchicon" ng-show="vm.utilities.getShowAddButtonAndSearchBar()">
 			<span ng-click="vm.showSearchbar()" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 		</div>
 	</div>
@@ -64,6 +64,6 @@
 	</md-sidenav>
 	<lp-button arial-label="vm.addNewButton.name" on-click="vm.addNewButton.onClick" round="vm.addNewButton.round" 
 	icon="vm.addNewButton.icon" class="add-new" 
-	ng-show="vm.isInHomeView"></lp-button>
+	ng-show="vm.utilities.getShowAddButtonAndSearchBar()"></lp-button>
 	<div ui-view class="view-area"></div>
 </div>
