@@ -19,20 +19,30 @@
 
         vm.inputsForm = [{
             name: 'Name',
-            value: ''
+            model: {
+                value: ''
+            }
         }, {
             name: 'Username',
-            value: ''
+            model: {
+                value: ''
+            }
         }, {
             name: 'Email ',
-            value: ''
+            model: {
+                value: ''
+            }
         }, {
             name: 'Password',
-            value: '',
+            model: {
+                value: ''
+            },
             type: 'password'
         }, {
             name: 'Password Confirm',
-            value: '',
+            model: {
+                value: ''
+            },
             type: 'password'
         }];
 
@@ -45,10 +55,10 @@
             name: 'Register',
             onClick: function() {
                 let obj = {
-                    "realm": vm.inputsForm[0].value,
-                    "username": vm.inputsForm[1].value,
-                    "email": vm.inputsForm[2].value,
-                    "password": vm.inputsForm[3].value
+                    "realm": vm.inputsForm[0].model.value,
+                    "username": vm.inputsForm[1].model.value,
+                    "email": vm.inputsForm[2].model.value,
+                    "password": vm.inputsForm[3].model.value
                 }
                 requestsService.createUser(obj, function(response) {
                     vm.languages.values.forEach(function(element, index) {

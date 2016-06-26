@@ -29,21 +29,72 @@
             });
         });
 
+        requestsService.getPurpose(function(response) {
+            console.log(response);
+            response.data.forEach(function(element) {
+                vm.purposes.buffer.push({
+                    name: element.NAME,
+                    id: element.id,
+                    _lowername: element.NAME.toLowerCase()
+                });
+            });
+        });
+
+        vm.description = {
+            title: 'Description',
+            value: '',
+            length: 100,
+            messageExps: ['maxlength'],
+            errorMessage: "Field should not exceed limit length",
+            formname: 'submitProjectForm',
+            name: 'description'
+
+        }
+
         vm.inputsForm = [{
-            name: 'Project Name',
-            value: ''
+            title: 'Project Name',
+            value: '',
+            name: 'project'
         }, {
-            name: 'Max Users',
-            value: ''
+            title: 'Max Users',
+            value: '',
+            name: 'maxuser'
         }, {
-            name: ' Git Repository ',
-            value: ''
+            title: ' Git Repository ',
+            value: '',
+            name: 'git'
         }];
 
         vm.button = {
             name: 'Submit',
             onClick: function() {
+                let obj = {
+                    "NAME": vm.inputsForm[0].value,
+                    "MAXUSERS": vm.inputsForm[1].value,
+                    "REPOSITORY": vm.inputsForm[2].value,
+                    "DESCRIPTION": vm.description.value,
+                    "PURPOSEID":vm.purposes.values[0].id
+                }
+                console.log(obj);
+                requestsService.createProject(obj, function(response) {
+                    let projectID = response.data.id;
+                    vm.languages.values.forEach(function(element, index) {
+                        requestsService.projectLanguage({
+                            PROJECTID: projectID,
+                            LANGUAGEID: element.id
+                        }, function(response) {
 
+                        });
+                    });
+                    vm.users.values.forEach(function(element, index) {
+                        requestsService.projectUser({
+                            PROJECTID: projectID,
+                            USERID: element.id
+                        }, function(response) {
+
+                        });
+                    });
+                });
             }
         }
 
@@ -53,10 +104,16 @@
             title: 'Languages'
         }
 
-         vm.users = {
+        vm.users = {
             values: [],
             buffer: [],
             title: 'Users'
+        }
+
+        vm.purposes = {
+            values: [],
+            buffer: [],
+            title: 'Purpose'
         }
     }
 })();

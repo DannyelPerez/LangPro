@@ -3,10 +3,18 @@
 
     angular.module("AppProject")
         .controller("inputsController", inputsController);
-    inputsController.$inject = [];
+    inputsController.$inject = ['$scope'];
 
-    function inputsController() {
+    function inputsController($scope) {
         var vm = this;
+
+        vm.showHints = true;
+        vm.hasHint = $scope.errorMessage ? true : false;
+        vm.changeShowHintsValue = function() {
+            if (!vm.hasHint)
+                return;
+            return $scope.valueModel.match($scope.pattern) === undefined ? false : true;
+        }
 
     }
 })();
