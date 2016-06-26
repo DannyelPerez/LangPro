@@ -23,6 +23,9 @@
             },
             userLanguage:function(langData,success){
                 $http.post(url+"USERS_LENGUAGES",JSON.stringify(langData)).then(success).catch(errorCallback);
+            },
+            getUser: function(success){
+                $http.get(url+"USERS").then(success).catch(errorCallback);
             }
         };
     };
