@@ -108,13 +108,13 @@
         }
 
         function findProject() {
-
+            $state.params.searchInput = vm.searchInput.value;
+            $state.params.reloadProjectsCards();
         }
 
         function findForum() {
             $state.params.searchInput = vm.searchInput.value;
             $state.params.reloadForumsCards();
-
         }
     }
 })();

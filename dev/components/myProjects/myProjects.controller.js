@@ -6,7 +6,6 @@
     myProjectsController.$inject = ['$state', 'requestsService','$stateParams'];
 
     function myProjectsController($state, requestsService,$stateParams) {
-        console.log($stateParams.params);
         if(!$stateParams.params)
             $state.go('dashboard.home');
         var vm = this;
@@ -18,6 +17,7 @@
 
         requestsService.getProjectsUser(vm.currentUser, function(response) {
             let data = response.data;
+            console.log(data);
             response.data.forEach(function(element, index) {
                 vm.projects.push(element.PROJECTID);
                 vm.serverIsDoneProjects = data.length - 1 === index ? true : false;

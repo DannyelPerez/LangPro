@@ -7,7 +7,6 @@
 
     function forumsTabController($state, $mdSidenav, $scope, requestsService, utilities) {
         var vm = this;
-        vm.cards = [];
 
         $state.params.reloadForumsCards = function() {
             vm.cards = [];
