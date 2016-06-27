@@ -7,11 +7,11 @@
         '$mdSidenav',
         '$scope',
         'utilities',
-        'authenticationService'
+        'authenticationService', '$rootScope'
     ];
 
     function dashboardController($state, $mdSidenav, $scope,
-        utilities,authenticationService) {
+        utilities, authenticationService, $rootScope) {
         var vm = this;
         vm.currentNavItem = 'home';
         vm.isActive = false;
@@ -53,6 +53,11 @@
             alert('arreglar el redireccionamiento');
         }
 
+        function goMyProjects() {
+            let data = $rootScope.Session;
+            $state.go("dashboard.myProjects", data);
+        }
+
         vm.panelOptions = [{
             title: 'My Profile',
             onClick: dummy,
@@ -60,7 +65,7 @@
             color: '#E91E63'
         }, {
             title: 'My Projects',
-            onClick: dummy,
+            onClick: goMyProjects,
             icon: 'glyphicon glyphicon-folder-open',
             color: '#8BC34A'
         }, {
