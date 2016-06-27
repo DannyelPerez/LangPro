@@ -60,6 +60,9 @@
             },
             getForums: function(success) {
                 $http.get(url + "FORUMS").then(success).catch(errorCallback);
+            },
+             getProjects: function(success) {
+                $http.get(url + "PROJECTS").then(success).catch(errorCallback);
             }
         };
     };
