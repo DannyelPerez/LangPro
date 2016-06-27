@@ -2,20 +2,27 @@
 	<div class="fixed">
 		<md-content class="contents">
 		<div class="carousel">
-		<jk-carousel data="vm.arrayData" item-template-url="'dev/components/projectsView/template.html'" max-width="700" max-height="400" class="center">
-		</jk-carousel>
+			<jk-carousel data="vm.arrayData" item-template-url="'dev/components/projectsView/template.html'" max-width="700" max-height="400" class="center">
+			</jk-carousel>
 		</div>
+		
+		<md-content flex layout-padding>
 		<p style="color:#2ecc71;">Description</p>
 		<md-divider></md-divider>
-		<md-content flex layout-padding>
 		<p ng-repeat="desc in vm.projectDesc">{{ desc }}</p>
 		</md-content>
+		
+		<md-content flex layout-padding>
 		<p style="color:#2ecc71;">Languages</p>
 		<md-divider></md-divider>
 		<p ng-repeat="item in vm.langsToDisplay">{{ item }}</p>
+		</md-content>
+		
+		<md-content flex layout-padding>
 		<p style="color:#2ecc71;">Users</p>
 		<md-divider></md-divider>
 		<p ng-repeat="item2 in vm.usersToDisplay">{{ item2 }}</p>
+		</md-content>
 		</md-content>
 	</div>
 </div>

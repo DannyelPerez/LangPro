@@ -3,52 +3,28 @@
 
     angular.module("AppProject")
         .controller("projectsTabController", projectsTabController);
-    projectsTabController.$inject = ['$state'];
+    projectsTabController.$inject = ['$state','requestsService'];
 
-    function projectsTabController($state) {
+    function projectsTabController($state,requestsService) {
         var vm = this;
-
-
-        vm.imagePath = 'https://material.angularjs.org/latest/img/washedout.png';
-        vm.imagePath2 = 'images/pc.png';
-
-        vm.cards = [{
-            image: 'https://material.angularjs.org/latest/img/washedout.png',
-            title: 'This is the title 1',
-            desc: "This is the first card"
-        }, {
-            image: 'images/go.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }, {
-            image: 'https://material.angularjs.org/latest/img/washedout.png',
-            title: 'This is the title 1',
-            desc: "This is the first card"
-        }, {
-            image: 'images/js.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }, {
-            image: 'images/node.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }, {
-            image: 'images/go.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }, {
-            image: 'https://material.angularjs.org/latest/img/washedout.png',
-            title: 'This is the title 1',
-            desc: "This is the first card"
-        }, {
-            image: 'images/go.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }, {
-            image: 'images/js.jpg',
-            title: 'This is the title 2',
-            desc: 'This is the second card'
-        }];
+        vm.cards = []
+        requestsService.getProjects(function(response) {
+            response.data.forEach(function(element, index) {
+                vm.cards.push({
+                    title: element.NAME,
+                    desc: element.DESCRIPTION,
+                    data: element,
+                    onClick: function(data){
+                        let params = {
+                            params : data
+                        };
+                        $state.go('dashboard.projectsView', params);
+                        
+                    },
+                    image: 'https://material.angularjs.org/latest/img/washedout.png'
+                });
+            });
+        });
 
 
     }

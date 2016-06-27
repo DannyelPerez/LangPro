@@ -3,10 +3,13 @@
 
     angular.module("AppProject")
         .controller("projectsViewController", projectsViewController);
-    projectsViewController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService'];
+    projectsViewController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService','authenticationService' ,'$stateParams'];
 
-    function projectsViewController($state, $mdSidenav, $scope, requestsService) {
+    function projectsViewController($state, $mdSidenav, $scope, requestsService,authenticationService,$stateParams) {
+        // if(!$stateParams.params)
+        //     $state.go('dashboard.home');
         var vm = this;
+        //vm.projectId = $stateParams.params.id;
         vm.projectId = 14;
         vm.serverIsDoneLang = false;
         vm.langsAreDone = false;

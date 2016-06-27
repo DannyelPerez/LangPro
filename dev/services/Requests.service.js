@@ -61,14 +61,20 @@
             getForums: function(success) {
                 $http.get(url + "FORUMS").then(success).catch(errorCallback);
             },
-            getUserById(id,success){
-                $http.get(url + "USERS/"+id).then(success).catch(errorCallback);
+            getUserById(id, success) {
+                $http.get(url + "USERS/" + id).then(success).catch(errorCallback);
             },
-            getForumCommentsById(id,success){
+            getForumCommentsById(id, success) {
                 $http.get(url + 'FORUM_PARTICIPANTS?filter={"where":{"IDFORUM":' + id + '}}').then(success).catch(errorCallback);
             },
-            postCommentInForum(data,success){
-                 $http.post(url + "FORUM_PARTICIPANTS", JSON.stringify(data)).then(success).catch(errorCallback);
+            postCommentInForum(data, success) {
+                $http.post(url + "FORUM_PARTICIPANTS", JSON.stringify(data)).then(success).catch(errorCallback);
+            },
+            getProjects: function(success) {
+                $http.get(url + "PROJECTS").then(success).catch(errorCallback);
+            },
+            getProjectsUser: function(id, success) {
+                $http.get(url + 'USERS_PROJECTS?filter={"where":{"USERID":' + id + '}}').then(success).catch(errorCallback);
             }
         };
     };
