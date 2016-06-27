@@ -7,33 +7,117 @@
 
     function projectsViewController($state, $mdSidenav, $scope, requestsService) {
         var vm = this;
-        vm.projectId = 1;
+        vm.projectId = 14;
+        vm.serverIsDoneLang = false;
+        vm.langsAreDone = false;
+        vm.serverIsDoneUser = false;
+        vm.usersAreDone = false;
+
+        vm.languagesFromServer = [{
+            values: []
+        }]
+
+        vm.usersFromServer = [{
+            values: []
+        }]
+
+        requestsService.getProjectUser(vm.projectId, function(response) {
+            let data = response.data;
+            response.data.forEach(function(element, index) {
+                vm.usersFromServer[0].values.push(element.USERID);
+                vm.serverIsDoneUser = data.length - 1 === index ? true : false;
+                getProjectUsers();
+            });
+        });
+
+        requestsService.getProject(vm.projectId, function(response) {
+            let data = response.data;
+            vm.projectDesc.push(data.DESCRIPTION);
+        });
 
         requestsService.getProjectLanguage(vm.projectId, function(response) {
-            console.log(response.data);
-            vm.languages.push(response.data);
+            let data = response.data;
+            response.data.forEach(function(element, index) {
+                vm.languagesFromServer[0].values.push(element.LANGUAGEID);
+                vm.serverIsDoneLang = data.length - 1 === index ? true : false;
+                getProjectLangs();
+            });
         });
 
         vm.arrayData = [{
             src: '../images/go.jpg'
         }, {
-            src: 'https://material.angularjs.org/latest/img/washedout.png'
+            src: '../images/p.jpg'
         }, {
-            src: '../images/node.jpg'
+            src: '../images/CodingSnippet.jpg'
         }];
 
-        vm.languages = [{
-            values: [],
-            buffer: [],
-            title: 'Languages'
-        }]
+        requestsService.getLanguage(function(response) {
+            let data = response.data;
+            response.data.forEach(function(element, index) {
+                vm.languages.buffer.push({
+                    name: element.NAME,
+                    id: element.id,
+                    _lowername: element.NAME.toLowerCase()
+                });
+                vm.langsAreDone = data.length - 1 === index ? true : false;
+                getProjectLangs();
+            });
+        });
 
-        console.log(vm.languages);
+        requestsService.getUser(function(response) {
+            let data = response.data;
+            response.data.forEach(function(element, index) {
+                vm.users.buffer.push({
+                    name: element.username,
+                    id: element.id,
+                    _lowername: element.username.toLowerCase()
+                });
+                vm.usersAreDone = data.length - 1 === index ? true : false;
+                getProjectUsers();
+            });
+        });
 
         vm.users = {
             values: [],
             buffer: [],
             title: 'Users'
+        }
+
+        vm.languages = {
+            values: [],
+            buffer: [],
+            title: 'Languages'
+        }
+
+        vm.langsToDisplay = [];
+        vm.usersToDisplay = [];
+        vm.projectDesc = [];
+
+        function getProjectLangs() {
+            if (vm.serverIsDoneLang && vm.langsAreDone) {
+                for (var i = 0; i < vm.languages.buffer.length; i++) {
+                    for (var j = 0; j < vm.languagesFromServer[0].values.length; j++) {
+                        if (vm.languages.buffer[i].id === vm.languagesFromServer[0].values[j]) {
+                            console.log(vm.languages.buffer[i].name);
+                            vm.langsToDisplay.push(vm.languages.buffer[i].name);
+                        }
+                    }
+                }
+            }
+        }
+
+        function getProjectUsers() {
+            if (vm.serverIsDoneUser && vm.usersAreDone) {
+                for (var i = 0; i < vm.users.buffer.length; i++) {
+                    for (var j = 0; j < vm.usersFromServer[0].values.length; j++) {
+                        if (vm.users.buffer[i].id === vm.usersFromServer[0].values[j]) {
+                            console.log(vm.users.buffer[i].name);
+                            vm.usersToDisplay.push(vm.users.buffer[i].name);
+                        }
+                    }
+                }
+            }
         }
     }
 })();

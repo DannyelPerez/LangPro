@@ -1,15 +1,21 @@
-<div class="projectsView">
-<md-content class="contents">
-	<jk-carousel data="vm.arrayData" item-template-url="'dev/components/projectsView/template.html'" max-width="700" max-height="400" class="center">
-	</jk-carousel>
-	<p style="color:#2ecc71;">Description</p>
-	<md-divider></md-divider>
-	<md-content flex layout-padding>
-	<p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
-	</md-content>
-	<p style="color:#2ecc71;">Languages</p>
-	<md-divider></md-divider>
-	<p style="color:#2ecc71;">Users</p>
-	<md-divider></md-divider>
-</md-content>
+<div class="projectsView ">
+	<div class="fixed">
+		<md-content class="contents">
+		<div class="carousel">
+		<jk-carousel data="vm.arrayData" item-template-url="'dev/components/projectsView/template.html'" max-width="700" max-height="400" class="center">
+		</jk-carousel>
+		</div>
+		<p style="color:#2ecc71;">Description</p>
+		<md-divider></md-divider>
+		<md-content flex layout-padding>
+		<p ng-repeat="desc in vm.projectDesc">{{ desc }}</p>
+		</md-content>
+		<p style="color:#2ecc71;">Languages</p>
+		<md-divider></md-divider>
+		<p ng-repeat="item in vm.langsToDisplay">{{ item }}</p>
+		<p style="color:#2ecc71;">Users</p>
+		<md-divider></md-divider>
+		<p ng-repeat="item2 in vm.usersToDisplay">{{ item2 }}</p>
+		</md-content>
+	</div>
 </div>

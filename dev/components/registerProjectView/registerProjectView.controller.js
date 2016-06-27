@@ -21,7 +21,6 @@
         });
 
         requestsService.getUser(function(response) {
-            console.log(response);
             response.data.forEach(function(element) {
                 vm.users.buffer.push({
                     name: element.username,
@@ -32,7 +31,6 @@
         });
 
         requestsService.getPurpose(function(response) {
-            console.log(response);
             response.data.forEach(function(element) {
                 vm.purposes.buffer.push({
                     name: element.NAME,

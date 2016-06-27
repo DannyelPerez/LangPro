@@ -7,9 +7,10 @@
     requestsService.$inject = [
         '$http',
         '$location',
+        'toaster'
     ];
 
-    function requestsService($http, $location) {
+    function requestsService($http, $location,toaster) {
         var url = "http://backendfindmecoworker.herokuapp.com/api/";
 
         function errorCallback(response) {
@@ -46,10 +47,16 @@
                 $http.post(url + "USERS_PROJECTS", JSON.stringify(userData)).then(success).catch(errorCallback);
             },
             getProjectLanguage: function(id, success) {
-                $http.get(url + "PROJECTS_LANGUAGES/"+id).then(success).catch(errorCallback);
+                $http.get(url + 'PROJECTS_LANGUAGES?filter={"where":{"PROJECTID":' + id + '}}').then(success).catch(errorCallback);
             },
             createForum: function(data, success) {
                 $http.post(url + "FORUMS", JSON.stringify(data)).then(success).catch(errorCallback);
+            },
+            getProjectUser: function(id, success) {
+                $http.get(url + 'USERS_PROJECTS?filter={"where":{"PROJECTID":' + id + '}}').then(success).catch(errorCallback);
+            },
+            getProject: function(id, success) {
+                $http.get(url + 'PROJECTS/' + id).then(success).catch(errorCallback);
             }
         };
     };
