@@ -12,13 +12,12 @@
     function forumsController($state, requestsService,
         authenticationService, toaster) {
         var vm = this;
-        var user = 'Daniel Perez';
-        vm.user = user;
+        vm.user = '';
         vm.initials = '';
         vm.userID = undefined;
 
         function init() {
-            let initials = user.split(' ');
+            let initials = vm.user.split(' ');
             vm.initials = initials[0].charAt(0) + initials[1].charAt(0);
         }
         vm.question = {
@@ -45,7 +44,7 @@
         }
 
         authenticationService.getUser(function(response) {
-            user = response.data.realm;
+            vm.user = response.data.realm;
             vm.userID = response.data.id;
             init();
         });
@@ -74,6 +73,7 @@
                     body: 'Forum created successfully',
                     showCloseButton: true
                 });
+                setTimeout($state.go('dashboard.home'), 3000);
             });
         }
 

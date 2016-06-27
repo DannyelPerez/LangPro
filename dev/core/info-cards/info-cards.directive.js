@@ -11,6 +11,7 @@
             restrict: 'E',
             scope: {
                 cards: '=?'
+
             },
             controller: 'infoCardsController as vm',
             templateUrl: 'dev/core/info-cards/info-cards.html'

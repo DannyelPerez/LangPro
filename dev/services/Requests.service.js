@@ -10,7 +10,7 @@
         'toaster'
     ];
 
-    function requestsService($http, $location,toaster) {
+    function requestsService($http, $location, toaster) {
         var url = "http://backendfindmecoworker.herokuapp.com/api/";
 
         function errorCallback(response) {
@@ -57,6 +57,9 @@
             },
             getProject: function(id, success) {
                 $http.get(url + 'PROJECTS/' + id).then(success).catch(errorCallback);
+            },
+            getForums: function(success) {
+                $http.get(url + "FORUMS").then(success).catch(errorCallback);
             }
         };
     };
