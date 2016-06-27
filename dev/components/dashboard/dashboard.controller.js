@@ -54,8 +54,8 @@
         }
 
         function goMyProjects() {
-            let data = $rootScope.Session;
-            $state.go("dashboard.myProjects", data);
+            let params = $rootScope.Session;
+            $state.go("dashboard.myProjects", params);
         }
 
         vm.panelOptions = [{
