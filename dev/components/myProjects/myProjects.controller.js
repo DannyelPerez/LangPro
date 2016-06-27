@@ -3,11 +3,13 @@
 
     angular.module("AppProject")
         .controller("myProjectsController", myProjectsController);
-    myProjectsController.$inject = ['$state', 'requestsService'];
+    myProjectsController.$inject = ['$state', 'requestsService','$stateParams'];
 
-    function myProjectsController($state, requestsService) {
+    function myProjectsController($state, requestsService,$stateParams) {
+        if(!$stateParams.params)
+            $state.go('dashboard.home');
         var vm = this;
-        vm.currentUser = 3;
+        vm.currentUser = $stateParams.params;
         vm.projects = [];
         vm.cards = [];
         vm.serverIsDoneProjects = false;

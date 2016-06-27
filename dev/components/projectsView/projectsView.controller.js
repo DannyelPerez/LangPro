@@ -11,7 +11,6 @@
         var vm = this;
         console.log($stateParams.params);
         vm.projectId = $stateParams.params.id;
-        vm.projectId = 14;
         vm.serverIsDoneLang = false;
         vm.langsAreDone = false;
         vm.serverIsDoneUser = false;
