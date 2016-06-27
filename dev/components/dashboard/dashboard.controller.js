@@ -91,7 +91,7 @@
             icon: 'glyphicon-plus',
             onClick: function() {
                 if (utilities.getCurrentTab() === 'PROJECTS')
-                    alert('go to create new project');
+                    $state.go('dashboard.registerProjectView');
                 else
                     $state.go('dashboard.newForum');
             }
