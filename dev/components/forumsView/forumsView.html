@@ -1,8 +1,47 @@
 <div class="forumsView">
 	<div class="contents">
 		<div class="timeline">
-			<div class="question"></div>
-			<div class="comment"></div>
+			<div class="card comment">
+				<div class="col-md-12 theme"
+				style="background-color: {{vm.theme.headbar}};"></div>
+				<div class="forum-wrapper">
+					<div class="header">
+						<div class="content">
+							<div class="user-initials"
+							style="background-color: {{vm.theme.color}};">{{vm.theme.initials}}</div>
+							<label class="user">{{vm.theme.user}}</label>
+						</div>
+					</div>
+					<div class="row">
+						<h1 class="col-md-12">{{vm.theme.theme}}</h1>
+						<p class="col-md-12">{{vm.theme.description}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="card" ng-repeat="item in vm.comments"
+				style="float: {{item.float}};">
+				<div class="forum-wrapper">
+					<div class="header">
+						<div class="content">
+							<div class="user-initials"
+							style="background-color: {{item.color}};">{{item.initials}}</div>
+							<label class="user">{{item.user}}</label>
+						</div>
+					</div>
+					<div class="row">
+						<p class="col-md-12">{{item.comment}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="card comment">
+				<div class="forum-wrapper">
+					<md-input-container class="md-block">
+					<label>Comment</label>
+					<textarea ng-model="vm.comment" md-maxlength="250" rows="5" md-select-on-focus=""></textarea>
+					</md-input-container>
+					<lp-button class="shareButton" name="vm.share.name" on-click="vm.share.onClick" color="vm.share.color"></lp-button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
