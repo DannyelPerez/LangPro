@@ -6,10 +6,11 @@
     myProjectsController.$inject = ['$state', 'requestsService','$stateParams'];
 
     function myProjectsController($state, requestsService,$stateParams) {
+        console.log($stateParams.params);
         if(!$stateParams.params)
             $state.go('dashboard.home');
         var vm = this;
-        vm.currentUser = $stateParams.params;
+        vm.currentUser = $stateParams.params.id;
         vm.projects = [];
         vm.cards = [];
         vm.serverIsDoneProjects = false;

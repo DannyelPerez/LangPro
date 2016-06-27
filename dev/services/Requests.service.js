@@ -79,7 +79,12 @@
             searchForums(value, success) {
                 let str = '%7B%22where%22%3A%7B%22NAME%22%3A%7B%22like%22%3A%22%25' + value + '%25%22%7D%7D%7D';
                 $http.get(url + 'FORUMS?filter=' + str).then(success).catch(errorCallback);
+            },
+            searchProject(value, success) {
+                let str = '%7B%22where%22%3A%7B%22NAME%22%3A%7B%22like%22%3A%22%25' + value + '%25%22%7D%7D%7D';
+                $http.get(url + 'FORUMS?filter=' + str).then(success).catch(errorCallback);
             }
+
         };
     };
 })();

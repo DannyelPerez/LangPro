@@ -35,7 +35,10 @@
             .state("dashboard.myProjects", {
                 url: "/myProjects",
                 templateUrl: templatesUrl + "myProjects/myProjects.html",
-                controller: "myProjectsController as vm"
+                controller: "myProjectsController as vm",
+                params: {
+                    params: undefined
+                }
             })
             .state("dashboard.registerProjectView", {
                 url: "/registerProjectView",

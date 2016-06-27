@@ -7,7 +7,7 @@
         '$mdSidenav',
         '$scope',
         'utilities',
-        'authenticationService', 
+        'authenticationService',
         '$rootScope'
     ];
 
@@ -55,7 +55,11 @@
         }
 
         function goMyProjects() {
-            let params = $rootScope.Session;
+            let params = {
+                params: {
+                    id: $rootScope.Session
+                }
+            };
             $state.go("dashboard.myProjects", params);
         }
 
@@ -110,7 +114,7 @@
         function findForum() {
             $state.params.searchInput = vm.searchInput.value;
             $state.params.reloadForumsCards();
-            
+
         }
     }
 })();
