@@ -28,7 +28,7 @@
                             let params = {
                                 params: data
                             };
-                            $state.go('dashboard.home', params);
+                            $state.go('dashboard.checkForum', params);
 
                         },
                         image: 'https://material.angularjs.org/latest/img/washedout.png'
