@@ -40,6 +40,14 @@
                     params: undefined
                 }
             })
+            .state("dashboard.myForums", {
+                url: "/myForums",
+                templateUrl: templatesUrl + "myForums/myForums.html",
+                controller: "myForumsController as vm",
+                params: {
+                    params: undefined
+                }
+            })
             .state("dashboard.registerProjectView", {
                 url: "/registerProjectView",
                 templateUrl: templatesUrl + "registerProjectView/registerProjectView.html",

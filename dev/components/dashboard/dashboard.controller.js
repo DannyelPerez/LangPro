@@ -63,6 +63,15 @@
             $state.go("dashboard.myProjects", params);
         }
 
+        function goMyForums() {
+            let params = {
+                params: {
+                    id: $rootScope.Session
+                }
+            };
+            $state.go("dashboard.myForums", params);
+        }
+
         vm.panelOptions = [{
             title: 'My Profile',
             onClick: dummy,
@@ -75,7 +84,7 @@
             color: '#8BC34A'
         }, {
             title: 'My Forums',
-            onClick: dummy,
+            onClick: goMyForums,
             icon: 'glyphicon glyphicon-list-alt',
             color: '#FF5722'
         }, {

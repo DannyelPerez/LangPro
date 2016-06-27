@@ -29,7 +29,7 @@
                 $http.post(url + "USERS", JSON.stringify(userData)).then(success).catch(errorCallback);
             },
             userLanguage: function(langData, success) {
-                $http.post(url + "USERS_LANGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
+                $http.post(url + "USERS_LENGUAGES", JSON.stringify(langData)).then(success).catch(errorCallback);
             },
             getUser: function(success) {
                 $http.get(url + "USERS").then(success).catch(errorCallback);
@@ -83,6 +83,9 @@
             searchProjects(value, success) {
                 let str = '%7B%22where%22%3A%7B%22NAME%22%3A%7B%22like%22%3A%22%25' + value + '%25%22%7D%7D%7D';
                 $http.get(url + 'PROJECTS?filter=' + str).then(success).catch(errorCallback);
+            },
+            getForumsUser: function(id, success) {
+                $http.get(url + 'FORUMS?filter={"where":{"CREATEDBY":' + id + '}}').then(success).catch(errorCallback);
             }
         };
     };

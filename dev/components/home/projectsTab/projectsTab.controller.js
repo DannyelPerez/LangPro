@@ -21,7 +21,7 @@
                                 let params = {
                                     params: data
                                 };
-                                $state.go('dashboard.checkForum', params);
+                                $state.go('dashboard.projectsView', params);
 
                             },
                             image: utilities.getImage()
@@ -40,7 +40,7 @@
                                 let params = {
                                     params: data
                                 };
-                                $state.go('dashboard.checkForum', params);
+                                $state.go('dashboard.projectsView', params);
 
                             },
                             image: utilities.getImage()

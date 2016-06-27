@@ -3,9 +3,9 @@
 
     angular.module("AppProject")
         .controller("registrationController", registrationController);
-    registrationController.$inject = ['$state', 'requestsService'];
+    registrationController.$inject = ['$state', 'requestsService', 'toaster'];
 
-    function registrationController($state, requestsService) {
+    function registrationController($state, requestsService, toaster) {
         var vm = this;
         requestsService.getLanguage(function(response) {
             response.data.forEach(function(element) {
@@ -66,7 +66,12 @@
                             USERID: response.data.id,
                             LANGUAGEID: element.id
                         }, function(response) {
-
+                            toaster.pop({
+                                type: 'success',
+                                title: "Success",
+                                body: "User registered successfully",
+                                showCloseButton: true
+                            });
                         });
                     });
                 });
