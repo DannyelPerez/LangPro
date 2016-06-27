@@ -15,7 +15,11 @@
                     desc: element.DESCRIPTION,
                     data: element,
                     onClick: function(data){
-                    	console.log(data);
+                    	let params = {
+                    		params : data
+                    	};
+                    	$state.go('dashboard.checkForum', params);
+                    	
                     },
                     image: 'https://material.angularjs.org/latest/img/washedout.png'
                 });

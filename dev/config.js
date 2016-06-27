@@ -49,6 +49,14 @@
                 templateUrl: templatesUrl + "forums/forums.html",
                 controller: "forumsController as vm"
             })
+            .state("dashboard.checkForum", {
+                url: "/checkForum",
+                templateUrl: templatesUrl + "forumsView/forumsView.html",
+                controller: "forumsViewController as vm",
+                params:{
+                    params:undefined
+                }
+            })
             .state("dashboard", {
                 templateUrl: templatesUrl + "dashboard/dashboard.html",
                 controller: "dashboardController as vm"
