@@ -33,7 +33,7 @@
             name: 'Share',
             color: '#FFC107',
             onClick: function() {
-            	createForum();
+                createForum();
             }
         }
 
@@ -73,7 +73,10 @@
                     body: 'Forum created successfully',
                     showCloseButton: true
                 });
-                setTimeout($state.go('dashboard.home'), 3000);
+                let params = {
+                    params: response.data
+                };
+                setTimeout($state.go('dashboard.checkForum', params), 9000);
             });
         }
 

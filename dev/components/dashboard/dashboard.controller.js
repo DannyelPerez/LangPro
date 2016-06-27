@@ -11,7 +11,7 @@
     ];
 
     function dashboardController($state, $mdSidenav, $scope,
-        utilities,authenticationService) {
+        utilities, authenticationService) {
         var vm = this;
         vm.currentNavItem = 'home';
         vm.isActive = false;
@@ -22,8 +22,8 @@
 
         utilities.setCurrentTab('PROJECTS');
 
-        vm.redirectLogin = function() {
-            $state.go("dashboard.login", {});
+        vm.redirectHome = function() {
+            $state.go("dashboard.home");
         }
         vm.redirectProject = function() {
             $state.go("dashboard.singleProjectView", {});
@@ -87,6 +87,24 @@
             }
         }
 
+        vm.searchInput = {
+            value: '',
+            doSearch: function() {
+                if (utilities.getCurrentTab() === 'PROJECTS')
+                    findProject();
+                else
+                    findForum();
+            }
+        }
 
+        function findProject() {
+
+        }
+
+        function findForum() {
+            $state.params.searchInput = vm.searchInput.value;
+            $state.params.reloadForumsCards();
+            
+        }
     }
 })();
