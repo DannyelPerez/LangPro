@@ -29,6 +29,11 @@
                 templateUrl: templatesUrl + "projectsView/projectsView.html",
                 controller: "projectsViewController as vm"
             })
+            .state("dashboard.myProjects", {
+                url: "/myProjects",
+                templateUrl: templatesUrl + "myProjects/myProjects.html",
+                controller: "myProjectsController as vm"
+            })
             .state("dashboard.registerProjectView", {
                 url: "/registerProjectView",
                 templateUrl: templatesUrl + "registerProjectView/registerProjectView.html",
@@ -53,8 +58,8 @@
                 url: "/checkForum",
                 templateUrl: templatesUrl + "forumsView/forumsView.html",
                 controller: "forumsViewController as vm",
-                params:{
-                    params:undefined
+                params: {
+                    params: undefined
                 }
             })
             .state("dashboard", {

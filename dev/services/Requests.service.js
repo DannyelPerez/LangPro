@@ -63,6 +63,9 @@
             },
              getProjects: function(success) {
                 $http.get(url + "PROJECTS").then(success).catch(errorCallback);
+            },
+            getProjectsUser: function(id, success) {
+                $http.get(url + 'USERS_PROJECTS?filter={"where":{"USERID":' + id + '}}').then(success).catch(errorCallback);
             }
         };
     };
