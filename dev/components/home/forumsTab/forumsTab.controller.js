@@ -3,11 +3,11 @@
 
     angular.module("AppProject")
         .controller("forumsTabController", forumsTabController);
-    forumsTabController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService'];
+    forumsTabController.$inject = ['$state', '$mdSidenav', '$scope', 'requestsService', 'utilities'];
 
-    function forumsTabController($state, $mdSidenav, $scope, requestsService) {
+    function forumsTabController($state, $mdSidenav, $scope, requestsService,utilities) {
         var vm = this;
-        vm.cards = []
+        vm.cards = [];
         requestsService.getForums(function(response) {
             response.data.forEach(function(element, index) {
                 vm.cards.push({
@@ -21,9 +21,10 @@
                     	$state.go('dashboard.checkForum', params);
                     	
                     },
-                    image: 'https://material.angularjs.org/latest/img/washedout.png'
+                    image: utilities.getImage()
                 });
             });
         });
+
     }
 })();

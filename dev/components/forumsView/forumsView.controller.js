@@ -8,71 +8,60 @@
         'authenticationService',
         'toaster',
         '$stateParams',
-        '$rootScope'
+        '$rootScope',
+        'utilities'
     ];
 
     function forumsViewController($state, requestsService,
-        authenticationService, toaster, $stateParams, $rootScope) {
+        authenticationService, toaster, $stateParams, $rootScope, utilities) {
+        var vm = this;
         if (!$stateParams.params)
             $state.go('dashboard.home');
-        var vm = this;
+        else
+            init();
+
         vm.comments = [];
         vm.currentUser = {};
-        vm.colorMap = {
-            1: '#FFC107',
-            2: '#03A9F4',
-            3: '#8BC34A',
-            4: '#F44336',
-            5: '#E91E63',
-            6: '#00796B',
-            7: '#FF9800',
-            8: '#303F9F',
-            9: '#9C27B0'
-        }
-
-        vm.theme = {
-            initials: '',
-            user: '',
-            theme: $stateParams.params.NAME,
-            description: $stateParams.params.DESCRIPTION,
-            color: getColor(),
-            headbar: getColor()
-        }
-
         vm.comment = '';
 
         vm.share = {
             name: 'Share',
-            color: getColor(),
+            color: utilities.getColor(),
             onClick: addComment
         }
 
-        requestsService.getUserById($stateParams.params.CREATEDBY, function(response) {
-            vm.theme.user = response.data.realm;
-            vm.theme.initials = getInitials(vm.theme.user);
-        });
-
-        requestsService.getForumCommentsById($stateParams.params.id, function(response) {
-            if (!response.data || response.data.length < 0)
-                return;
-            let data = response.data;
-            for (let i = 0; i < data.length; i++) {
-                let obj = {
-                    comment: data[i].COMMENT,
-                    color: getColor(),
-                    float: i % 2 === 0 ? 'right' : 'left'
-                }
-                requestsService.getUserById(data[i].IDUSER, function(resp) {
-                    obj.user = resp.data.realm;
-                    obj.initials = getInitials(obj.user);
-                    vm.comments.push(obj);
-                });
+        function init() {
+            vm.theme = {
+                initials: '',
+                user: '',
+                theme: $stateParams.params.NAME,
+                description: $stateParams.params.DESCRIPTION,
+                color: utilities.getColor(),
+                headbar: utilities.getColor()
             }
-        });
 
-        function getColor() {
-            let color = Math.floor((Math.random() * 9) + 1);
-            return vm.colorMap[color];
+            requestsService.getUserById($stateParams.params.CREATEDBY, function(response) {
+                vm.theme.user = response.data.realm;
+                vm.theme.initials = getInitials(vm.theme.user);
+            });
+
+            requestsService.getForumCommentsById($stateParams.params.id, function(response) {
+                if (!response.data || response.data.length < 0)
+                    return;
+                let data = response.data;
+                for (let i = 0; i < data.length; i++) {
+                    let obj = {
+                        comment: data[i].COMMENT,
+                        color: utilities.getColor(),
+                        float: i % 2 === 0 ? 'right' : 'left'
+                    }
+                    requestsService.getUserById(data[i].IDUSER, function(resp) {
+                        obj.user = resp.data.realm;
+                        obj.initials = getInitials(obj.user);
+                        vm.comments.push(obj);
+                    });
+                }
+            });
         }
 
         function getInitials(user) {
@@ -99,7 +88,7 @@
                 });
                 let objC = {
                     comment: vm.comment,
-                    color: getColor(),
+                    color: utilities.getColor(),
                     float: vm.comments.length % 2 === 0 ? 'right' : 'left',
                     user: vm.currentUser.realm,
                     initials: getInitials(vm.currentUser.realm)
