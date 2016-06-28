@@ -66,7 +66,13 @@
 
         function getInitials(user) {
             let initials = user.split(' ');
-            return initials[0].charAt(0) + initials[1].charAt(0);
+            let ini = '';
+            for (let i = 0; i < initials.length; i++) {
+                ini += initials[i].charAt(0);
+                if (i === 2)
+                    break;
+            }
+            return ini;
         }
 
         requestsService.getUserById($rootScope.Session, function(response) {
